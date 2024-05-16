@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-rI3f6TnvOXLbLyRZoK43GmMxhY6pzNuCLir/HRq5tZZbC0v28XMNj52jVQEx6EB4RN9JbouTJc+dqMXrwbBw9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden; 
+}
+
+nav {
+    display: flex;
+    padding: 0% 4%;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity to your preference */
+}
+        nav img {
+            width: 100px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul {
+            list-style: none;
+        }
+
+        .nav-links ul li {
+            position: relative;
+            display: inline-block;
+            padding: 10px 14px;
+        }
+
+        .nav-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: white;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        .nav-links ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 2; 
+        }
+
+        .nav-links ul li:hover > ul {
+            display: block;
+        }
+
+        body{
+            font-family: verdana,sans-serif;
+
+        }
+
+        .mySlides {
+    display: none;
+
+}
+        img{
+            max-height: 710px;
+            max-width: 1550px;
+            display: block; 
+            width: 100%; 
+        }
+
+        .slideshow-container{
+            max-width: 90%;
+            max-height: 710px; 
+            max-width: 1550px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .prev, .next{
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next{
+            right: 0; 
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover{
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .wrapper{
+            position: absolute;
+            top: 25%;
+            right: 10%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 440px;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,.5);
+            border-radius: 20px;
+            backdrop-filter: blur(40px);
+            box-shadow: 0 0 30px rgba(0,0,0,.5);
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            padding: 20px;
+        }
+        .h2{
+            text-align: center;
+        }
+        .station {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.station-input {
+    margin-right: 20px; 
+}
+
+.station label {
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold; 
+    margin-top: 10px; 
+}
+
+.station select {
+    width: 250px; 
+    height: 40%; 
+}
+
+.passenger-count {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; 
+}
+
+.passenger-count button {
+    margin-left: 10px; /
+}
+.style-0 {
+                color: rgb(3, 3, 3);
+                padding: 20px 30px;
+                box-sizing: border-box;
+                margin-bottom: 0px;
+            }
+        
+            .style-1 {
+                font-size: 14px;
+                float: left;
+                width: 100%;
+                margin-bottom: 15px;
+                color: rgb(0, 0, 0);
+                display: block;
+                max-width: 100%;
+                font-weight: 700;
+                box-sizing: border-box;
+            }
+        
+            .style-2 {
+                width: 100%;
+                max-width: 100%;
+                padding: 11px;
+                border-radius: 4px;
+                margin-bottom: 25px;
+                color: rgb(0, 0, 0);
+                background-position: calc(100% - 14px) 12px;
+                background-repeat: no-repeat;
+                box-sizing: border-box;
+                appearance: none;
+                border: 0.8px solid rgb(4, 4, 4);
+                background-image: url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/arrow.png');
+                font-family: SourceSansPro-Regular;
+                font-size: 14px;
+                line-height: 20px;
+                text-transform: none;
+                margin: 0px 0px 25px;
+            }
+        
+            .style-3 {
+                box-sizing: border-box;
+                margin-bottom: 0px;
+            }
+        
+            .style-4 {
+                font-size: 14px;
+                float: left;
+                width: 100%;
+                margin-bottom: 15px;
+                color: rgb(7, 6, 6);
+                display: block;
+                max-width: 100%;
+                font-weight: 700;
+                box-sizing: border-box;
+            }
+        
+            .style-5 {
+                width: 100%;
+                max-width: 100%;
+                padding: 11px;
+                border-radius: 4px;
+                margin-bottom: 25px;
+                color: rgb(0, 0, 0);
+                background-position: calc(100% - 14px) 12px;
+                background-repeat: no-repeat;
+                box-sizing: border-box;
+                appearance: none;
+                border: 0.8px solid rgb(223, 223, 223);
+                background-image: url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/arrow.png');
+                font-family: SourceSansPro-Regular;
+                font-size: 14px;
+                line-height: 20px;
+                text-transform: none;
+                margin: 0px 0px 25px;
+            }
+        
+            .style-6 {
+                box-sizing: border-box;
+                margin-bottom: 0px;
+            }
+        
+            .style-7 {
+                box-sizing: border-box;
+            }   
+        
+            .style-8 {
+                margin-top: 5px !important;
+                padding: 14px 34px;
+                background: rgb(0, 166, 81) none repeat scroll 0% 0% / auto padding-box border-box;
+                border: 0px none rgb(255, 255, 255);
+                color: rgb(255, 255, 255);
+                font-size: 18px;
+                text-align: center;
+                cursor: pointer;
+                font-family: SourceSansPro-Bold;
+                margin-bottom: 0px;
+                line-height: 25.7143px;
+                box-sizing: border-box;
+                appearance: button;
+                margin-right: 22px;
+                margin-bottom: 5%;
+            }
+            .style-9 {
+        box-sizing: border-box;
+        margin-bottom: 0px;
+    }
+
+    .style-10 {
+        position: relative;
+        width: auto;
+        height: auto;
+        left: 29%;
+        box-shadow: none;
+        display: inline-block;
+        z-index: auto;
+        min-width: 0px;
+        min-height: 0px;
+        animation: auto ease 0s 1 normal none running none;
+        border: 0px none rgb(51, 51, 51);
+        float: none;
+        margin: 0px;
+        opacity: 1;
+        outline: rgb(51, 51, 51) none 0px;
+        overflow: visible;
+        padding: 0px;
+        text-indent: 0px;
+        transform: none;
+        transition: none 0s ease 0s;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .style-11 {
+    background: url("https://www.ltmetro.com/wp-content/uploads/2021/03/Network-Map-small-min.jpg") 141px -795px no-repeat;
+    display: none;
+    top: 76px;
+    left: -108px;
+    display: none;
+    top: 76px;
+    left: -108px;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    box-shadow: rgba(255, 255, 255, 0.85) 0px 0px 0px 7px, rgba(0, 0, 0, 0.25) 0px 0px 7px 7px, rgba(0, 0, 0, 0.25) 0px 0px 40px 2px inset;
+    cursor: none;
+    z-index: 100;
+    min-width: 0px;
+    min-height: 0px;
+    animation: auto ease 0s 1 normal none running none;
+    border: 0px none rgb(51, 51, 51);
+    float: none;
+    margin: 0px;
+    opacity: 1;
+    outline: rgb(51, 51, 51) none 0px;
+    overflow: visible;
+    padding: 0px;
+    text-indent: 0px;
+    transform: none;
+    transition: none 0s ease 0s;
+    box-sizing: border-box;
+}
+    .style-12 {
+        display: block;
+        max-width: 100%;
+        margin: 0px auto;
+
+        box-sizing: border-box;
+        border: 0px none rgb(51, 51, 51);
+        margin-bottom: 0px;
+    }   
+    .style-13 {
+    font-size: 36px;
+    color: rgb(57, 58, 60);
+    text-align: center;
+    font-family: SourceSansPro-Bold;
+    background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/blue_line.jpg') no-repeat scroll 50% 100% / auto padding-box border-box;
+    margin: 30px 0; 
+    padding: 0px;
+    line-height: 90px;
+    padding-bottom: 0px;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    box-sizing: border-box;
+}
+.container{
+	max-width: 1170px;
+	margin:auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}   
+.footer{
+	background-color: #141d34f5;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #395bd4;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+.footer-col p {
+    color: #bbbbbb; /* Set the initial color */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.footer-col p:hover {
+    color: #ffffff; /* Change the color to white on hover */
+}
+.button {
+    margin-top: 5px !important;
+    padding: 14px 34px;
+    background: rgb(0, 166, 81) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    font-family: SourceSansPro-Bold;
+    margin-bottom: 0px;
+    line-height: 25.7143px;
+    box-sizing: border-box;
+    appearance: button;
+    margin-right: 22px;
+    margin-bottom: 5%;
+}
+.button1 {
+    margin-top: 5px !important;
+    padding: 14px 34px;
+    background: rgb(0, 166, 81) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 0px none rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    font-family: SourceSansPro-Bold;
+    margin-bottom: 0px;
+    line-height: 25.7143px;
+    box-sizing: border-box;
+    appearance: button;
+    margin-right: 22px;
+    margin-bottom: 5%;
+}
+
+.button:hover {
+    background-color: rgba(0, 166, 81, 0.8);
+}
+.button1:hover {
+    background-color: rgba(0, 166, 81, 0.8);
+}
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.popup-content th {
+    padding-right:200px; /* Add margin-bottom to give space between table headers */
+}
+    </style>
+</head>
+<body>
+<section class="header">
+    <nav>
+        <a href="index.html"><img src="logo (2).png"></a>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About us</a></li>
+                <li>
+                    <a href="#">
+                        Travelling Info
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown">
+                        <li>
+                            <a href="home.html" onclick="scrollToRouteMap()">Route map<i class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li><a href="#">Ticketing</a></li>
+                        <li><a href="timings.html">Metro Timings</a></li>
+                        <li><a href="doanddont.html">Do's and Dont's</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="1.png">
+            <div class="text">Caption text</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="2.avif">
+            <div class="text">Caption text</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="33.jpg">
+            <div class="text">Caption text</div>
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="4.jpg">
+            <div class="text">Caption text</div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a> 
+    </div>
+    <div class="wrapper">
+        <h2>Ticketing</h2>
+        <div class="style-0">
+            <label class="style-1">From</label>
+            <select id="from-station" name="from-st-name" class="style-2">
+                <option class="style-3" disabled selected>--Please Select--</option>
+                <option value="station1">Ameerpet</option>
+                <option value="station2">Begumpet</option>
+                <option value="station3">Bharat Nagar</option>
+                <option value="station4">Dilshuknagar</option>
+                <option value="station5">Durgam Cheruvu</option>
+                <option value="station6">Erragadda</option>
+                <option value="station7">Gandhi Hospital</option>
+                <option value="station8">Hitec city</option>
+                <option value="station9">JNTU College</option>
+                <option value="station10">Jublee Hills</option>
+                <option value="station11">KBHP Colony</option>
+                <option value="station12">Khairatabad</option>
+                <option value="station13">Kukatpally</option>
+                <option value="station14">LB Nagar</option>
+                <option value="station15">Madhapur</option>
+                <option value="station16">Miyapur</option>
+                <option value="station17">NGRI</option>
+                <option value="station18">Nampally</option>
+                <option value="station19">RTC X Roads</option>
+                <option value="station20">Raidurg</option>
+                <option value="station21">Secundarabad East</option>
+                <option value="station22">Sultan Bazar</option>
+                <option value="station23">Tarnaka</option>
+                <option value="station24">Uppal</option>
+                <option value="station25">Yusufguda</option>
+                <!-- Add more stations as needed -->
+            </select>
+            <label class="style-4">To</label>
+            <select id="to-station" name="to-st-name" class="style-5">
+                <option class="style-6" disabled selected>--Please Select--</option>
+                <option value="station1">Ameerpet</option>
+                <option value="station2">Begumpet</option>
+                <option value="station3">Bharat Nagar</option>
+                <option value="station4">Dilshuknagar</option>
+                <option value="station5">Durgam Cheruvu</option>
+                <option value="station6">Erragadda</option>
+                <option value="station7">Gandhi Hospital</option>
+                <option value="station8">Hitec city</option>
+                <option value="station9">JNTU College</option>
+                <option value="station10">Jublee Hills</option>
+                <option value="station11">KBHP Colony</option>
+                <option value="station12">Khairatabad</option>
+                <option value="station13">Kukatpally</option>
+                <option value="station14">LB Nagar</option>
+                <option value="station15">Madhapur</option>
+                <option value="station16">Miyapur</option>
+                <option value="station17">NGRI</option>
+                <option value="station18">Nampally</option>
+                <option value="station19">RTC X Roads</option>
+                <option value="station20">Raidurg</option>
+                <option value="station21">Secundarabad East</option>
+                <option value="station22">Sultan Bazar</option>
+                <option value="station23">Tarnaka</option>
+                <option value="station24">Uppal</option>
+                <option value="station25">Yusufguda</option>
+                <!-- Add more stations as needed -->
+            </select>
+            <br class="style-7" />
+           <button class="button1" id="popupButton"> Get Details </button> 
+            <button class="button">PAY</button>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="payment.js"></script> <!-- Include the Razorpay configuration script -->
+    </div>
+    <h3 class="style-13">Metro Network Map</h3>
+    <div class="style-9" id="routeMapSection">
+        <div class="style-10">
+            <div class="style-11"></div><img class="style-12" src="Metro_Corridor_map-2048x1707-min-1536x1280-min.png" />
+        </div>
+    </div>
+    <div id="popupContainer" class="popup-container">
+        <div class="popup-content">
+          <span class="close" id="closePopup">&times;</span>
+          <table id="popupTable">
+            <thead>
+              <tr>
+                <th>From</th>
+                <th> To</th>
+                <th>Fare</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Table body content will be added dynamically using JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+</section>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
+
+    setInterval(function() {
+        plusSlides(1);
+    }, 3000); 
+
+    function incrementPassengerCount() {
+        var passengerInput = document.getElementById("passengerCount");
+        passengerInput.value = parseInt(passengerInput.value) + 1;
+    }
+    function scrollToRouteMap() {
+        var routeMapSection = document.getElementById("routeMapSection");
+        routeMapSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+    var fromDropdown = document.getElementById("from-station");
+    var toDropdown = document.getElementById("to-station");
+
+    fromDropdown.addEventListener("change", function() {
+        var selectedOption = this.value;
+        updateToDropdown(selectedOption);
+    });
+
+    toDropdown.addEventListener("change", function() {
+        var selectedOption = this.value;
+        updateFromDropdown(selectedOption);
+    });
+
+    function updateToDropdown(selectedOption) {
+        // Remove selected option from To dropdown
+        var options = toDropdown.options;
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].value === selectedOption) {
+                toDropdown.remove(i);
+                break;
+            }
+        }
+    }
+
+    function updateFromDropdown(selectedOption) {
+        // Remove selected option from From dropdown
+        var options = fromDropdown.options;
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].value === selectedOption) {
+                fromDropdown.remove(i);
+                break;
+            }
+        }
+    }
+});
+document.addEventListener("DOMContentLoaded", function() {
+        var fromDropdown = document.getElementById("from-station");
+        var toDropdown = document.getElementById("to-station");
+
+        fromDropdown.addEventListener("change", function() {
+            var selectedOption = this.value;
+            updateToDropdown(selectedOption);
+        });
+
+        toDropdown.addEventListener("change", function() {
+            var selectedOption = this.value;
+            updateFromDropdown(selectedOption);
+        });
+
+        function updateToDropdown(selectedOption) {
+            // Remove selected option from To dropdown
+            var options = toDropdown.options;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].value === selectedOption) {
+                    toDropdown.remove(i);
+                    break;
+                }
+            }
+        }
+
+        function updateFromDropdown(selectedOption) {
+            // Remove selected option from From dropdown
+            var options = fromDropdown.options;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].value === selectedOption) {
+                    fromDropdown.remove(i);
+                    break;
+                }
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var fromDropdown = document.getElementById("from-station");
+        var toDropdown = document.getElementById("to-station");
+
+        fromDropdown.addEventListener("change", function() {
+            var selectedOption = this.options[this.selectedIndex].textContent;
+            updateToDropdown(selectedOption);
+        });
+
+        toDropdown.addEventListener("change", function() {
+            var selectedOption = this.options[this.selectedIndex].textContent;
+            updateFromDropdown(selectedOption);
+        });
+
+        function updateToDropdown(selectedOption) {
+            // Remove selected option from To dropdown
+            var options = toDropdown.options;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].textContent === selectedOption) {
+                    toDropdown.remove(i);
+                    break;
+                }
+            }
+        }
+
+        function updateFromDropdown(selectedOption) {
+            // Remove selected option from From dropdown
+            var options = fromDropdown.options;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].textContent === selectedOption) {
+                    fromDropdown.remove(i);
+                    break;
+                }
+            }
+        }
+    });
+
+    document.getElementById("popupButton").addEventListener("click", function() {
+    var fromSelectedText = document.getElementById("from-station").options[document.getElementById("from-station").selectedIndex].textContent;
+    var toSelectedText = document.getElementById("to-station").options[document.getElementById("to-station").selectedIndex].textContent;
+
+    // Example fare calculation
+    var fare = calculateFare(fromSelectedText, toSelectedText); // Replace with your fare calculation function
+
+    var tableBody = document.querySelector("#popupTable tbody");
+    tableBody.innerHTML = ""; // Clear previous content
+
+    // Create table row with the selected text and fare
+    var newRow = "<tr><td>" + fromSelectedText + "</td><td>" + toSelectedText + "</td><td>" + fare + "</td></tr>";
+    tableBody.innerHTML = newRow;
+
+    document.getElementById("popupContainer").style.display = "block";
+});
+
+document.getElementById("closePopup").addEventListener("click", function() {
+    document.getElementById("popupContainer").style.display = "none";
+});
+
+function calculateFare(from, to) {
+    var fareMap = {
+        "Ameerpet": {
+            "Begumpet": 20,
+            "Bharat Nagar": 30,
+            "Dilshuknagar": 40,
+            "Durgam Cheruvu": 50,
+            "Erragadda": 25,
+            "Gandhi Hospital": 35,
+            "Hitec city": 45,
+            "JNTU College": 55,
+            "Jublee Hills": 60,
+            "KBHP Colony": 50,
+            "Khairatabad": 30,
+            "Kukatpally": 25,
+            "LB Nagar": 40,
+            "Madhapur": 35,
+            "Miyapur": 45,
+            "NGRI": 50,
+            "Nampally": 30,
+            "RTC X Roads": 35,
+            "Raidurg": 55,
+            "Secundarabad East": 40,
+            "Sultan Bazar": 20,
+            "Tarnaka": 25,
+            "Uppal": 45,
+            "Yusufguda": 35
+        },
+        "Begumpet": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Bharat Nagar": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Dilshuknagar": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Durgam Cheruvu": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Erragadda": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Gandhi Hospital": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Hitec city": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "JNTU College": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Jublee Hills": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "KBHP Colony": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Khairatabad": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Kukatpally": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "LB Nagar": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Madhapur": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Miyapur": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "NGRI": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "Nampally": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+        "RTC X Roads": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+        "Raidurg": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+        "Secundarabad East": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+        "Sultan Bazar": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+        "Tarnaka": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+        "Uppal": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+        "Yusufguda": {
+            "Ameerpet": 20,
+            "Bharat Nagar": 25,
+            "Dilshuknagar": 35,
+            "Durgam Cheruvu": 45,
+            "Erragadda": 30,
+            "Gandhi Hospital": 40,
+            "Hitec city": 50,
+            "JNTU College": 60,
+            "Jublee Hills": 25,
+            "KBHP Colony": 45,
+            "Khairatabad": 25,
+            "Kukatpally": 30,
+            "LB Nagar": 35,
+            "Madhapur": 40,
+            "Miyapur": 55,
+            "NGRI": 35,
+            "Nampally": 25,
+            "RTC X Roads": 30,
+            "Raidurg": 50,
+            "Secundarabad East": 20,
+            "Sultan Bazar": 30,
+            "Tarnaka": 35,
+            "Uppal": 60,
+            "Yusufguda": 40
+        },
+
+
+        // Repeat the pattern for other stations
+    };
+
+    if (fareMap[from] && fareMap[from][to]) {
+        return "Rs " + fareMap[from][to];
+    } else {
+        return "Fare not available";
+    }
+}
+
+</script>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>About us</h4>
+                <P>
+                    we are students of Manipal Institute of Technology
+                </P>
+            </div>
+            <div class="footer-col">
+                <h4>Travelling info</h4>
+                <ul>
+                    <li><a href="#">Route Map</a></li>
+                    <li><a href="#">Ticketing</a></li>
+                    <li><a href="#">Metro Timings</a></li>
+                    <li><a href="#">Do's and Dont's</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact us</h4>
+                <p>+91 9949104600</p>
+                <p>+91 9014883570</p>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+</body>
+</html>

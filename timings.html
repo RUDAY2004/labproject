@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-rI3f6TnvOXLbLyRZoK43GmMxhY6pzNuCLir/HRq5tZZbC0v28XMNj52jVQEx6EB4RN9JbouTJc+dqMXrwbBw9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+    <style>
+        * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       
+       nav {
+            display: flex;
+            padding: 0% 4%;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        nav img {
+            width: 100px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul {
+            list-style: none;
+        }
+
+        .nav-links ul li {
+            position: relative;
+            display: inline-block;
+            padding: 10px 14px;
+        }
+
+        .nav-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: white;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        .nav-links ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 2; 
+        }
+
+        .nav-links ul li:hover > ul {
+            display: block;
+        }
+        .footer {
+            background-color: #141d34f5;
+            padding: 70px 0;
+            margin-top: 100px;
+            clear: both;
+        }
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+            float: left;
+        }
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #395bd4;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(18, 16, 16, 0.2);
+            margin:0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #ffffff;
+        }
+        .footer-col p {
+            color: #bbbbbb;
+            transition: color 0.3s;
+        }
+        .footer-col p:hover {
+            color: #ffffff;
+        }
+        .container {
+            max-width: 1170px;
+            margin:auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul {
+            list-style: none;
+        }
+        .image1{
+            width: 1527px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 0%;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+        }
+        .style-78 {
+        font-family: SourceSansPro-Bold;
+        font-size: 34.27px;
+        font-weight: 400;
+        color: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/blue_line.jpg') no-repeat scroll 0px 52px / auto padding-box border-box;
+        padding-bottom: 20px;
+        margin: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        line-height: 37.697px;
+        box-sizing: border-box;
+    }
+    .style-0 {
+        box-sizing: border-box;
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        padding-top: 30px;
+        padding-bottom: 0px;
+    }
+
+    .style-1 {
+        width: 100%;
+        float: left;
+        box-sizing: border-box;
+        padding-left: 0px;
+        padding-right: 0px;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .style-2 {
+        box-sizing: border-box;
+        padding-top: 0px;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        padding-bottom: 0px;
+    }
+
+    .style-3 {
+        box-sizing: border-box;
+        border-left: 500px;
+    }
+
+    .style-4 {
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .style-5 {
+        box-sizing: border-box;
+        margin-bottom: 0px;
+    }
+
+    .style-6 {
+        font-weight: 400;
+        font-size: 16px;
+        color: rgb(25, 22, 22);
+        line-height: 24px;
+        font-family: SourceSansPro-Regular;
+        margin-bottom: 9px;
+        margin: 0px 0px 9px;
+        box-sizing: border-box;
+    }
+
+    .style-7 {
+        font-weight: 400;
+        font-size: 16px;
+        color: rgb(18, 17, 17);
+        line-height: 24px;
+        font-family: SourceSansPro-Regular;
+        margin-bottom: 9px;
+        margin: 0px 0px 9px;
+        box-sizing: border-box;
+    }
+
+    .style-8 {
+        list-style: outside none none;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        box-sizing: border-box;
+    }
+
+    .style-9 {
+        padding-left: 29px;
+        color: rgb(29, 26, 26);
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/list_style_bg.png') no-repeat scroll 0px 3px / auto padding-box border-box;
+        font-size: 16px;
+        line-height: 24px;
+        box-sizing: border-box;
+    }
+
+    .style-10 {
+        color: red;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+    }
+
+    .style-11 {
+        padding-left: 29px;
+        color: rgb(31, 29, 29);
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/list_style_bg.png') no-repeat scroll 0px 3px / auto padding-box border-box;
+        font-size: 16px;
+        line-height: 24px;
+        box-sizing: border-box;
+    }
+
+    .style-12 {
+        color: green;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+    }
+
+    .style-13 {
+        padding-left: 29px;
+        color: rgb(38, 34, 34);
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/list_style_bg.png') no-repeat scroll 0px 3px / auto padding-box border-box;
+        font-size: 16px;
+        line-height: 24px;
+        box-sizing: border-box;
+    }
+
+    .style-14 {
+        color: blue;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+    }
+
+    .style-15 {
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .style-16 {
+        box-sizing: border-box;
+        margin-bottom: 0px;
+    }
+
+    .style-17 {
+        font-weight: 400;
+        font-size: 16px;
+        color: rgb(36, 35, 35);
+        line-height: 24px;
+        font-family: SourceSansPro-Regular;
+        margin-bottom: 9px;
+        margin: 0px 0px 9px;
+        box-sizing: border-box;
+    }
+
+    .style-18 {
+        list-style: outside none none;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        box-sizing: border-box;
+    }
+
+    .style-19 {
+        padding-left: 29px;
+        color: rgb(39, 37, 37);
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/list_style_bg.png') no-repeat scroll 0px 3px / auto padding-box border-box;
+        font-size: 16px;
+        line-height: 24px;
+        box-sizing: border-box;
+    }
+
+    .style-20 {
+        padding-left: 29px;
+        color: rgb(44, 40, 40);
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/list_style_bg.png') no-repeat scroll 0px 3px / auto padding-box border-box;
+        font-size: 16px;
+        line-height: 24px;
+        box-sizing: border-box;
+    }
+
+    .style-21 {
+        padding-left: 29px;
+        color: rgb(12, 11, 11);
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0) url('https://www.ltmetro.com/wp-content/themes/ltmetro/assets/img/list_style_bg.png') no-repeat scroll 0px 3px / auto padding-box border-box;
+        font-size: 16px;
+        line-height: 24px;
+        box-sizing: border-box;
+    }
+
+
+    </style>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="logo (2).png"></a>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="aboutus.html">About us</a></li>
+                    <li>
+                        <a href="#">
+                            Travelling Info
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="home.html" onclick="scrollToRouteMap()">Route map<i class="fas fa-chevron-down"></i></a>
+                            </li>
+                            <li><a href="home.html">Ticketing</a></li>
+                            <li><a href="timings.html">Metro Timings</a></li>
+                            <li><a href="doanddont.html">Do's and Dont's</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <div class="style-21">
+        <div class="style-1">
+            <img class="image1" src="1200px-Hyderabad_Metro.jpg" alt="Don'ts" />
+        </div>
+    </div>
+    <h3 class="style-78">Train Timings</h3>
+    <div class="style-0">
+        <div class="style-1">
+            <div class="style-2">
+                <div class="style-3">
+                    <div class="style-4">
+                        <div class="style-5">
+                            <p class="style-6">Hyderabad Metro Rail is operational from 06:00 am to 11:00 pm. The first train starts at 06:00 am and last train departs at 11:00 pm from all terminal stations.</p>
+                            <p class="style-7">Hyderabad Metro Rail services are now made available across the city by connecting three different lines through three interchange stations.</p>
+                            <ul class="style-8">
+                                <li class="style-9"><em class="style-10">Red Line</em> – Miyapur to L B Nagar via MG Bus Station, Nampally &amp; Ameerpet</li>
+                                <li class="style-11"><em class="style-12">Green Line</em> – JBS Parade Ground to MG Bus Station via Secunderabad</li>
+                                <li class="style-13"><em class="style-14">Blue Line</em> – Nagole to Raidurg via Secunderabad &amp; Ameerpet</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="style-15">
+                        <div class="style-16">
+                            <p class="style-17">Interchange stations connecting two different lines</p>
+                            <ul class="style-18">
+                                <li class="style-19">MG Bus Station connects Red Line and Green Line</li>
+                                <li class="style-20">JBS Parade Ground connects Green Line and Blue Line</li>
+                                <li class="style-21">Ameerpet Station connects Red Line and Blue Line</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <P>
+                        we are students of Manipal Institute of Technology
+                    </P>
+                </div>
+                <div class="footer-col">
+                    <h4>Travelling info</h4>
+                    <ul>
+                        <li><a href="home.html">Route Map</a></li>
+                        <li><a href="home.html">Ticketing</a></li>
+                        <li><a href="#">Metro Timings</a></li>
+                        <li><a href="doanddont.html">Do's and Dont's</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <p>+91 9949104600</p>
+                    <p>+91 9014883570</p>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

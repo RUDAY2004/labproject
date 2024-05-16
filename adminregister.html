@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Metro</title>
+    <style>
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0; 
+            background: url('backgroundlogologin.jpg') no-repeat;
+            background-size: cover;
+            background-position: center;
+            
+        }
+
+        .header {
+            position: absolute; 
+            top: 0;
+            width: 100%;
+            z-index: 1; 
+        }
+
+        nav img {
+            width: 100px;
+        }
+
+        .input-box {
+            margin-bottom: 20px; 
+        }
+        .wrapper {
+            position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    max-width: 90%;
+    height: 650px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+        h2 {
+            text-align: center; 
+        }
+        .input-box{
+            position: relative;
+            width: 100%;
+            height: 30px;
+            border-bottom: 2px solid #000000;
+            margin: 30px 0;
+
+        }
+        .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #000000;
+    font-weight: 100;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label,
+.input-box input:not(:placeholder-shown) ~ label {
+    top: -5px;
+    font-size: 1.0em; /* Adjust label font size when moved up */
+    color: #000000; /* Change label color when moved up */
+}
+        .input-box input{
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 0.8em;
+            color: #000000;
+            font-weight: 600;
+            padding: 0 35px 0 5px;
+            transform-origin: 0.0;
+
+        }
+        .input-box .icon {
+           position: absolute;
+           top: 50%;
+           transform: translateY(-50%);
+           right: 15px;
+           font-size: 1.2em;
+           color: #000000;
+           line-height: 57px;
+        }
+        .remember-forgot{
+            font-size: .9em;
+            color: #000000;
+            font-weight: 500;
+            margin: -15px 0 25px;
+            display: flex;
+            align-items: center;
+            
+        }
+        .remember-forgot label{
+            margin-right: 10px;
+        }
+        .remember-forgot label input {
+            accent-color: #000000;
+            margin-right: 3px;
+        }
+        .remember-forgot a{
+            color: #000000;
+            text-decoration: none;
+        }
+        .remember-forgot a:hover{
+            text-decoration: underline;
+        }
+    
+        .btn{
+            width: 90%;
+            height: 50px;
+            background-color: #000000;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 501;
+        }
+        .gender-options {
+            margin-bottom: 0px;
+            margin-left: 6px; 
+        }
+        .login-register{
+            font-size: .9em;
+            color: #000000;
+            text-align: center;
+            font-weight: 500;
+            margin: 25px 0 10px;
+
+        }
+        .login-register p a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;  
+        }
+        .login-register p a:hover{
+            text-decoration: underline;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="logo (2).png"></a>
+        </nav>
+    </section>
+    <div class="wrapper">
+        <h2>Registration</h2>
+        <form action="adminregister.php" method="post">
+        <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" name="username" required>
+            <label>Adminname</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" name="name" required>
+            <label>Name</label>
+        </div>
+        <div class="gender-options">
+            <label for="gender">Gender:</label>
+            <label for="male"><input type="radio" name="gender" id="male" value="Male">Male</label>
+            <label for="female"><input type="radio" name="gender" id="female" value="Female">Female</label>
+            <label for="others"><input type="radio" name="gender" id="others" value="Others">Others</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="email" name="email" required>
+            <label>Email</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="call"></ion-icon></span>
+            <input type="text" name="phonenumber" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+            <label>Phone number</label>
+        </div>        
+        <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" required>
+            <label>Confirm Password</label>
+        </div>
+        <div class="remember-forgot">
+            <label><input type="checkbox">
+                I agree to the terms and conditions
+            </label>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        </form>
+        <div class="login-register">
+            <p>Already have an account?
+                <a href="admin.html" class="login-link">Login</a></p>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

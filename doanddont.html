@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-rI3f6TnvOXLbLyRZoK43GmMxhY6pzNuCLir/HRq5tZZbC0v28XMNj52jVQEx6EB4RN9JbouTJc+dqMXrwbBw9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: SourceSansPro-Regular, sans-serif;
+        }
+
+        .header1 {
+            background-color: rgb(0, 75, 136);
+            color: #fff;
+            margin: 30px;
+            padding: 15px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .container1 {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .section {
+            width: 50%;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 10px;
+            border-right: 1.6px solid rgb(0, 75, 136);
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .image {
+            width: 600px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 0%;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+        }
+        .image1{
+            width: 1527px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 0%;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+        }
+
+        .text {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 2px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+            display: none;
+        }
+
+        .image-container:hover .text {
+            display: block;
+        }
+
+        .dos-donts {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .dos-donts h2 {
+            font-size: 48px;
+            color: #000;
+            margin-bottom: 30px;
+            font-family: SourceSansPro-Bold;
+        }
+        nav {
+            display: flex;
+            padding: 0% 4%;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        nav img {
+            width: 100px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul {
+            list-style: none;
+        }
+
+        .nav-links ul li {
+            position: relative;
+            display: inline-block;
+            padding: 10px 14px;
+        }
+
+        .nav-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: white;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        .nav-links ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 2; 
+        }
+
+        .nav-links ul li:hover > ul {
+            display: block;
+        }
+
+        
+        .style-10 {
+            width: 100%;
+            margin-bottom: 30px;
+            margin-left: 0px;
+            float: left;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-family: SourceSansPro-Bold;
+            padding: 12px 0px;
+            box-sizing: border-box;
+        }
+
+        .style-11 {
+            display: none;
+            margin-right: 7px;
+            cursor: pointer;
+            background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+            color: rgb(0, 75, 136);
+            padding: 4px 20px;
+            font-size: 16px;
+            margin: 0px 7px 0px 10px;
+            text-decoration: none solid rgb(0, 75, 136);
+            box-sizing: border-box;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .style-12 {
+            margin-left: 7px;
+            cursor: pointer;
+            background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+            color: rgb(255, 255, 255);
+            padding: 15px 600px;
+            font-size: 23px;
+            text-decoration: none solid rgb(0, 75, 136);
+            box-sizing: border-box;
+            background-color: rgb(0, 75, 136);
+        }
+        .footer {
+            background-color: #141d34f5;
+            padding: 70px 0;
+            margin-top: 100px;
+            clear: both;
+        }
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+            float: left;
+        }
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #395bd4;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+        }
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255,255,255,0.2);
+            margin:0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #ffffff;
+        }
+        .footer-col p {
+            color: #bbbbbb;
+            transition: color 0.3s;
+        }
+        .footer-col p:hover {
+            color: #ffffff;
+        }
+        .container {
+            max-width: 1170px;
+            margin:auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="logo (2).png"></a>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="aboutus.html">About us</a></li>
+                    <li>
+                        <a href="#">
+                            Travelling Info
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="home.html" onclick="scrollToRouteMap()">Route map<i class="fas fa-chevron-down"></i></a>
+                            </li>
+                            <li><a href="home.html">Ticketing</a></li>
+                            <li><a href="timings.html">Metro Timings</a></li>
+                            <li><a href="doanddont.html">Do's and Dont's</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="style-0">
+        <div class="style-1">
+            <img class="image1" src="1200px-Hyderabad_Metro.jpg" alt="Don'ts" />
+        </div>
+    </div>
+
+    <div class="header1">Street Level</div>
+    <div class="container1">
+        <div class="section">
+            <div class="image-container">
+                <img class="image" src="Do's.jpg" alt="Do's" />
+            </div>
+        </div>
+        <div class="section">
+            <div class="image-container">
+                <img class="image" src="Dont's.jpg" alt="Don'ts" />
+            </div>
+        </div>
+    </div>
+
+    <div class="style-10"><a class="style-11">Prev</a><a class="style-12">Next</a></div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <P>
+                        we are students of Manipal Institute of Technology
+                    </P>
+                </div>
+                <div class="footer-col">
+                    <h4>Travelling info</h4>
+                    <ul>
+                        <li><a href="home.html">Route Map</a></li>
+                        <li><a href="home.html">Ticketing</a></li>
+                        <li><a href="timings.html">Metro Timings</a></li>
+                        <li><a href="doanddont.html">Do's and Dont's</a></li>
+                    </ul>   
+                </div>
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <p>+91 9949104600</p>
+                    <p>+91 9014883570</p>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
